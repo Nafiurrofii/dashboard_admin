@@ -131,3 +131,50 @@ form .fields .input-field {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+th, td {
+    padding: 8px 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btnbb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 100%;
+    max-width: 100px;
+    border: none;
+    outline: none;
+    color: var(--putih);
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: var(--hijau);
+    transition: all 0.3s linear;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 400;
+    box-shadow: 0 5px 0 #004c49;
+    transform: translateY(0);
+    position: relative;
+    overflow: hidden;
+}
+
+.btnbb:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #004c49;
+}
+
+.btnbb:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 0 #004c49;
+}
+
+.roq {
+    position: relative;
+    top: 22px;
+}
