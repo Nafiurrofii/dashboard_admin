@@ -178,3 +178,18 @@ th, td {
     position: relative;
     top: 22px;
 }
+
+.search-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.search-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 70%;
+  height: 43px;
+}

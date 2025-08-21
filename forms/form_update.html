@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/plugins.min.css" />
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="../assets/css/demo.css" />
@@ -186,9 +187,8 @@
                 <div class="collapse show" id="forms">
                   <ul class="nav nav-collapse">
                     <li class="active">
-                      <a href="../forms/forms.html">
-                        <span class="sub-item">Basic Form</span>
-                      </a>
+                      <a href="#"><span class="sub-item">Input Form</span></a>
+                      <a href="form_update.html"><span class="sub-item">Update Form</span></a>
                     </li>
                   </ul>
                 </div>
@@ -736,170 +736,271 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header">
-                    <div class="card-title text-center">Form Input Data Santri</div>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <h5>Data Santri</h5>
-                      <div class="col-md-4 col-lg-4">
-                        <div class="form-group">
-                          <label for="largeInput">Large Input</label>
-                          <input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
+                <form action="" name="submit-to-google-sheet">
+                  <div class="card">
+                    <div class="card-header"><div class="card-title text-center">Form Input Data Santri</div></div>
+                    <div class="form first">
+                        <div class="details personal">
+                          <div class="search-input">
+                            <div class="input-group search-group">
+                              <div class="input-group-prepend">
+                                <button type="" class="btn btn-search pe-1">
+                                  <i class="fa fa-search search-icon"></i>
+                                </button>
+                              </div>
+                              <input class="form-control" id="searchInputId" type="text" placeholder="Seacrh Berdasarkan ID ...">
+                            </div>                            
+                            <!-- <input id="searchInputId" type="text" placeholder="Cari ID"> -->
+                            <button id="searchButtonId" type="button" class="btnb ms-4" style="height: 40px;">Cari Berdasarkan ID</button>
+                          </div>
+                          <span class="title">Data Santri</span>
+                            <div class="fields">
+                              <input name="ID Santri" type="hidden" id="dataId">
+                                <div class="input-field">
+                                    <label for="nama_lengkap">Nama Lengkap</label>
+                                    <input type="text" placeholder="Masukkan Nama Lengkap" id="nama_lengkap" name="Nama Lengkap">
+                                </div>
+                                <div class="input-field">
+                                    <label for="tahun_masuk">Tahun Masuk</label>
+                                    <input type="number" placeholder="Tahun Masuk" id="tahun_masuk" name="Tahun Masuk">
+                                </div>
+                                <div class="input-field">
+                                    <label for="nisn">NISN</label>
+                                    <input type="text" placeholder="Masukkan NISN" id="nisn" name="NISN">
+                                </div>
+                                <div class="input-field">
+                                    <label for="nism">NISM</label>
+                                    <input type="text" placeholder="Masukkan NISM" id="nism" name="NISM">
+                                </div>
+                                <div class="input-field">
+                                    <label for="nik_santri">NIK</label>
+                                    <input type="text" placeholder="Masukkan NIK" id="nik_santri" name="NIK Santri">
+                                </div>
+                                <div class="input-field">
+                                    <label for="tempat_lahir">Tempat Lahir</label>
+                                    <input type="text" placeholder="Masukkan Tempat Lahir" id="tempat_lahir" name="Tempat Lahir Santri">
+                                </div>
+                                <div class="input-field">
+                                    <label for="tanggal_lahir">Tanggal Lahir</label>
+                                    <input type="date" id="tanggal_lahir" name="Tanggal Lahir Santri">
+                                </div>
+                                <div class="input-field">
+                                    <label for="no_telp_santri">No. Telp/WA Santri</label>
+                                    <input type="tel" placeholder="Masukkan Nomor Telepon" id="no_telp_santri" name="No. Telp/WA Santri">
+                                </div>
+                                <div class="input-field">
+                                    <label for="nomor_kk">Nomor KK</label>
+                                    <input type="text" placeholder="Masukkan Nomor KK" id="nomor_kk" name="Nomor KK">
+                                </div>
+                                <div class="input-field">
+                                    <label for="jumlah_saudara">Jumlah Saudara</label>
+                                    <input type="number" placeholder="Jumlah Saudara" id="jumlah_saudara" name="Jumlah Saudara">
+                                </div>
+                                <div class="input-field">
+                                    <label for="anak_ke">Anak ke</label>
+                                    <input type="number" placeholder="Anak ke" id="anak_ke" name="Anak ke">
+                                </div>
+                                <div class="input-field">
+                                    <label for="aktifitas_pendidikan">Aktifitas Pendidikan</label>
+                                    <select name="Aktifitas Pendidikan" id="" placeholder="aktifitas_pendidikan">
+                                        <option value="" selected disabled>Aktifitas Pendidikan</option>
+                                        <option value="SD/MI">SD/MI</option>
+                                        <option value="SMP/MTs">SMP/MTs</option>
+                                        <option value="SMA/MA/SMK">SMA/MA/SMK</option>
+                                        <option value="PTN/PTS">PTN/PTS</option>
+                                        <option value="Pondok Saja">Pondok Saja</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="pembiaya">Yang Membiayai Sekolah</label>
+                                    <select name="Yang Membiayai Sekolah" id="" placeholder="aktifitas_pendidikan">
+                                        <option value="" selected disabled>Yang Membiayai</option>
+                                        <option value="Orang Tua">Orang Tua</option>
+                                        <option value="Biaya Sendiri">Biaya Sendiri</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="hobi">Hobi</label>
+                                    <input type="text" placeholder="Hobi" id="hobi" name="Hobi">
+                                </div>
+                                <div class="input-field">
+                                    <label for="cita_cita">Cita-Cita</label>
+                                    <input type="text" placeholder="Cita-Cita" id="cita_cita" name="Cita Cita">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                          <label for="largeSelect">Large Select</label>
-                          <select class="form-select form-control-lg" id="largeSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
+
+                        <div class="details id">
+                            <span class="title">Data Orang Tua</span>
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label for="nama_ayah">Nama Ayah</label>
+                                    <input type="text" placeholder="Nama Ayah" id="nama_ayah" name="Nama Ayah">
+                                </div>
+                                <div class="input-field">
+                                    <label for="status_ayah">Status Ayah</label>
+                                    <select name="Status Ayah">
+                                        <option value="" selected disabled>Status Ayah</option>
+                                        <option value="Masih Hidup">Masih Hidup</option>
+                                        <option value="Sudah Meninggal">Sudah Meninggal</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="nik_ayah">NIK Ayah</label>
+                                    <input type="text" placeholder="NIK Ayah" id="nik_ayah" name="NIK Ayah">
+                                </div>
+                                <div class="input-field">
+                                    <label for="tempat_lahir_ayah">Tempat Lahir Ayah</label>
+                                    <input type="text" placeholder="Tempat Lahir Ayah" id="tempat_lahir_ayah" name="Tempat Lahir Ayah">
+                                </div>
+                                <div class="input-field">
+                                    <label for="tanggal_lahir_ayah">Tanggal Lahir Ayah</label>
+                                    <input type="date" id="tanggal_lahir_ayah" name="Tanggal Lahir Ayah">
+                                </div>
+                                <div class="input-field">
+                                    <label for="pekerjaan_ayah">Pekerjaan Ayah</label>
+                                    <input type="text" placeholder="Pekerjaan Ayah" id="pekerjaan_ayah" name="Pekerjaan Ayah">
+                                </div>
+                                <div class="input-field">
+                                    <label for="pendidikan_ayah">Pendidikan Terakhir Ayah</label>
+                                    <input type="text" placeholder="Pendidikan Terakhir Ayah" id="pendidikan_ayah" name="Pendidikan Terakhir Ayah">
+                                </div>
+                                <div class="input-field">
+                                    <label for="nama_ibu">Nama Ibu</label>
+                                    <input type="text" placeholder="Nama Ibu" id="nama_ibu" name="Nama Ibu">
+                                </div>
+                                <div class="input-field">
+                                    <label for="status_ibu">Status Ibu</label>
+                                    <select name="Status Ibu">
+                                        <option value="" selected disabled>Status Ibu</option>
+                                        <option value="Masih Hidup">Masih Hidup</option>
+                                        <option value="Sudah Meninggal">Sudah Meninggal</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="nik_ibu">NIK Ibu</label>
+                                    <input type="text" placeholder="NIK Ibu" id="nik_ibu" name="NIK Ibu">
+                                </div>
+                                <div class="input-field">
+                                    <label for="tempat_lahir_ibu">Tempat Lahir Ibu</label>
+                                    <input type="text" placeholder="Tempat Lahir Ibu" id="tempat_lahir_ibu" name="Tempat Lahir Ibu">
+                                </div>
+                                <div class="input-field">
+                                    <label for="tanggal_lahir_ibu">Tanggal Lahir Ibu</label>
+                                    <input type="date" id="tanggal_lahir_ibu" name="Tanggal Lahir Ibu">
+                                </div>
+                                <div class="input-field">
+                                    <label for="pekerjaan_ibu">Pekerjaan Ibu</label>
+                                    <input type="text" placeholder="Pekerjaan Ibu" id="pekerjaan_ibu" name="Pekerjaan Ibu">
+                                </div>
+                                <div class="input-field">
+                                    <label for="pendidikan_ibu">Pendidikan Terakhir Ibu</label>
+                                    <input type="text" placeholder="Pendidikan Terakhir Ibu" id="pendidikan_ibu" name="Pendidikan Terakhir Ibu">
+                                </div>
+                                <div class="input-field">
+                                    <label for="no_telp_ortu">No. Telp Orang Tua</label>
+                                    <input type="tel" placeholder="Nomor Telepon Orang Tua" id="no_telp_ortu" name="No Telp Orang Tua">
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-md-4 col-lg-4">
-                        <div class="form-group">
-                          <label for="largeInput">Large Input</label>
-                          <input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
+
+                        <div class="details id">
+                            <span class="title">Alamat & Data Lainnya</span>
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label for="provinsi">Provinsi</label>
+                                    <input type="text" placeholder="Provinsi" id="provinsi" name="Provinsi">
+                                </div>
+                                <div class="input-field">
+                                    <label for="kabupaten">Kabupaten/Kota</label>
+                                    <input type="text" placeholder="Kabupaten/Kota" id="kabupaten" name="Kabupaten/Kota">
+                                </div>
+                                <div class="input-field">
+                                    <label for="kecamatan">Kecamatan</label>
+                                    <input type="text" placeholder="Kecamatan" id="kecamatan" name="Kecamatan">
+                                </div>
+                                <div class="input-field">
+                                    <label for="kelurahan">Kelurahan/Desa</label>
+                                    <input type="text" placeholder="Kelurahan/Desa" id="kelurahan" name="Kelurahan/Desa">
+                                </div>
+                                <div class="input-field">
+                                    <label for="rt">RT</label>
+                                    <input type="text" placeholder="RT" id="rt" name="RT">
+                                </div>
+                                <div class="input-field">
+                                    <label for="rw">RW</label>
+                                    <input type="text" placeholder="RW" id="rw" name="RW">
+                                </div>
+                                <div class="input-field">
+                                    <label for="alamat_lengkap">Alamat Lengkap</label>
+                                    <input type="text" placeholder="Alamat Lengkap" id="alamat_lengkap" name="Alamat Lengkap">
+                                </div>
+                                <div class="input-field">
+                                    <label for="kode_pos">Kode Pos</label>
+                                    <input type="text" placeholder="Kode Pos" id="kode_pos" name="Kode Pos">
+                                </div>
+                                <div class="input-field">
+                                    <label for="kelengkapan_berkas">Kelengkapan Berkas</label>
+                                    <input type="text" placeholder="Kelengkapan Berkas" id="kelengkapan_berkas" name="Kelengkapan Berkas">
+                                </div>
+                                <div class="input-field">
+                                    <label for="riwayat_kesehatan">Riwayat Kesehatan</label>
+                                    <input type="text" placeholder="Riwayat Kesehatan" id="riwayat_kesehatan" name="Riwayat Kesehatan">
+                                </div>
+                                <div class="input-field">
+                                    <label for="pembagian_kamar">Pembagian Kamar</label>
+                                    <select name="Pembagian Kamar" id="">
+                                        <option value="" selected>Kamar</option>
+                                        <option value="Kamar As Salam">Kamar As Salam</option>
+                                        <option value="Kamar Wali Songo">Kamar Wali Songo</option>
+                                        <option value="Kamar Asy'ari">Kamar Asy'ari</option>
+                                        <option value="Kamar Syafi'I">Kamar Syafi'I</option>
+                                        <option value="Kamar Maliki">Kamar Maliki</option>
+                                        <option value="Kamar Takhfidz">Kamar Takhfidz</option>
+                                        <option value="Kamar Al Azhar">Kamar Al Azhar</option>
+                                        <option value="Kamar Al Badar">Kamar Al Badar</option>
+                                        <option value="Kamar Al Hikam">Kamar Al Hikam</option>
+                                        <option value="Kamar Umar">Kamar Umar</option>
+                                        <option value="Kamar Riyadhoh">Kamar Riyadhoh</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="status_tempat_tinggal">Status Tempat Tinggal</label>
+                                    <select name="Status Tempat Tinggal" id="">
+                                        <option value="" selected disabled>Status Tempat Tinggal</option>
+                                        <option value="Mukim">Mukim</option>
+                                        <option value="Nduduk">Nduduk</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="status_keaktifan">Status Keaktifan</label>
+                                    <select name="Status Keaktifan" id="">
+                                        <option value="" selected disabled>Status Keaktifan</option>
+                                        <option value="Santri Aktif">Santri Aktif</option>
+                                        <option value="Mustahiq">Mustahiq</option>
+                                        <option value="Pondok">Pondok</option>
+
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="status_santri">Status Santri</label>
+                                    <select name="Status Santri" id="">
+                                        <option value="" selected disabled>Status Santri</option>
+                                        <option value="Aktif">Aktif</option>
+                                        <option value="Boyong">Boyong</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="tahun_boyong">Tahun Boyong</label>
+                                    <input type="number" placeholder="Tahun Boyong" id="tahun_boyong" name="Tahun Boyong">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                          <label for="largeSelect">Large Select</label>
-                          <select class="form-select form-control-lg" id="largeSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-4 col-lg-4">
-                        <div class="form-group">
-                          <label for="largeInput">Large Input</label>
-                          <input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
-                        </div>
-                        <div class="form-group">
-                          <label for="largeSelect">Large Select</label>
-                          <select class="form-select form-control-lg" id="largeSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                      </div>
+
+                        <button type="submit" class="btnb">Submit</button>
                     </div>
-                    <div class="row mt-4">
-                      <h5>Data Santri</h5>
-                      <div class="col-md-4 col-lg-4">
-                        <div class="form-group">
-                          <label for="largeInput">Large Input</label>
-                          <input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
-                        </div>
-                        <div class="form-group">
-                          <label for="largeSelect">Large Select</label>
-                          <select class="form-select form-control-lg" id="largeSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-4 col-lg-4">
-                        <div class="form-group">
-                          <label for="largeInput">Large Input</label>
-                          <input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
-                        </div>
-                        <div class="form-group">
-                          <label for="largeSelect">Large Select</label>
-                          <select class="form-select form-control-lg" id="largeSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-4 col-lg-4">
-                        <div class="form-group">
-                          <label for="largeInput">Large Input</label>
-                          <input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
-                        </div>
-                        <div class="form-group">
-                          <label for="largeSelect">Large Select</label>
-                          <select class="form-select form-control-lg" id="largeSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row mt-4">
-                      <h5>Data Santri</h5>
-                      <div class="col-md-4 col-lg-4">
-                        <div class="form-group">
-                          <label for="largeInput">Large Input</label>
-                          <input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
-                        </div>
-                        <div class="form-group">
-                          <label for="largeSelect">Large Select</label>
-                          <select class="form-select form-control-lg" id="largeSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-4 col-lg-4">
-                        <div class="form-group">
-                          <label for="largeInput">Large Input</label>
-                          <input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
-                        </div>
-                        <div class="form-group">
-                          <label for="largeSelect">Large Select</label>
-                          <select class="form-select form-control-lg" id="largeSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-4 col-lg-4">
-                        <div class="form-group">
-                          <label for="largeInput">Large Input</label>
-                          <input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
-                        </div>
-                        <div class="form-group">
-                          <label for="largeSelect">Large Select</label>
-                          <select class="form-select form-control-lg" id="largeSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                  <div class="card-action">
-                    <button class="btn btn-success">Submit</button>
-                    <button class="btn btn-danger">Cancel</button>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -1165,6 +1266,9 @@
 
     <!-- Kaiadmin JS -->
     <script src="../assets/js/kaiadmin.min.js"></script>
+
+    <!-- konek spreadsheet -->
+     <script src="../assets/js/script_update.js"></script>
 
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="../assets/js/setting-demo2.js"></script>

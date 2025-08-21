@@ -25,64 +25,57 @@ form.addEventListener('submit', e => {
 
 
 
-//   const searchButtonId = document.getElementById('searchButtonId');
-//   const searchInputId = document.getElementById('searchInputId');
-//   const searchInputName = document.getElementById('searchInputName');
-//   const dataIdInput = document.getElementById('dataId');
-//   const firstNameInput = document.querySelector('input[name="firstName"]');
-//   const lastNameInput = document.querySelector('input[name="lastName"]');
+  const searchButtonId = document.getElementById('searchButtonId');
+  const searchInputId = document.getElementById('searchInputId');
+  const searchInputName = document.getElementById('searchInputName');
+  const dataIdInput = document.getElementById('dataId');
+  const firstNameInput = document.querySelector('input[name="firstName"]');
+  const lastNameInput = document.querySelector('input[name="lastName"]');
 
   // Event listener untuk formulir submit (Add/Update)
-  // form.addEventListener('submit', e => {
-  //   e.preventDefault();
-  //   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       if (data.status === 'updated') {
-  //         alert('Data berhasil diperbarui!');
-  //       } else if (data.status === 'added') {
-  //         alert('Data berhasil ditambahkan!');
-  //       }
-  //       // showAllData();
-  //     })
-  //     .catch(error => console.error('Error!', error.message));
-  // });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'updated') {
+          alert('Data berhasil diperbarui!');
+        } else if (data.status === 'added') {
+          alert('Data berhasil ditambahkan!');
+        }
+        // showAllData();
+      })
+      .catch(error => console.error('Error!', error.message));
+  });
 
 
 
 
   // Event listener untuk tombol "Cari Berdasarkan ID"
-//   searchButtonId.addEventListener('click', () => {
-//     const searchId = searchInputId.value;
-//     if (searchId) {
-//       dataContainer.innerHTML = `Mencari data dengan ID: ${searchId}...`;
-//       fetch(`${scriptURL}?searchId=${encodeURIComponent(searchId)}`)
-//         .then(response => response.json())
-//         .then(data => {
-//           if (data.result === 'success' && data.data.length > 0) {
-//             const foundData = data.data[0];
-//             dataIdInput.value = foundData.id;
-//             firstNameInput.value = foundData.firstName;
-//             lastNameInput.value = foundData.lastName;
-//             alert('Data ditemukan, silakan perbarui.');
-//             showData(data); // Menampilkan hasil pencarian di tabel
-//           } else {
-//             alert('Data tidak ditemukan.');
-//             dataIdInput.value = '';
-//             firstNameInput.value = '';
-//             lastNameInput.value = '';
-//             dataContainer.innerHTML = '<p>Data tidak ditemukan.</p>';
-//           }
-//         })
-//         .catch(error => console.error('Error:', error));
-//     } else {
-//       alert('Silakan masukkan ID yang ingin dicari.');
-//     }
-//   });
-
-
-
-
-
-  // Memuat data saat halaman pertama kali dimuat
-//   showAllData();
+  searchButtonId.addEventListener('click', () => {
+    const searchId = searchInputId.value;
+    if (searchId) {
+      dataContainer.innerHTML = `Mencari data dengan ID: ${searchId}...`;
+      fetch(`${scriptURL}?searchId=${encodeURIComponent(searchId)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.result === 'success' && data.data.length > 0) {
+            const foundData = data.data[0];
+            dataIdInput.value = foundData.id;
+            firstNameInput.value = foundData.firstName;
+            lastNameInput.value = foundData.lastName;
+            alert('Data ditemukan, silakan perbarui.');
+            showData(data); // Menampilkan hasil pencarian di tabel
+          } else {
+            alert('Data tidak ditemukan.');
+            dataIdInput.value = '';
+            firstNameInput.value = '';
+            lastNameInput.value = '';
+            dataContainer.innerHTML = '<p>Data tidak ditemukan.</p>';
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+      alert('Silakan masukkan ID yang ingin dicari.');
+    }
+  });
