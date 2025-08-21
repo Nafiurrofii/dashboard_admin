@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw6E5CFLsqF7B6WvH8khobsBEN50_m6NfPZ9GlA8EsD3kp8_c7N6WOmsm0Kp9sGlUVZ/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzeJs7RIH8CEw3-WLH3FjMfiNHyMxqDUSMwdc_b310_tzyLBskq_t4niZATmg7MZCQ-/exec'
 const showAllDataButton = document.getElementById('showAllDataButton');
 const dataContainer = document.getElementById('data-container');
 const searchButtonName = document.getElementById('searchButtonName');
