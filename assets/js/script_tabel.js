@@ -34,10 +34,14 @@ function showData(data) {
 
 // Event listener untuk tombol "Tampilkan Semua Data"
 showAllDataButton.addEventListener('click', () => {
+  showAllDataButton.classList.toggle('btn-loading');
   dataContainer.innerHTML = 'Memuat semua data...';
   fetch(scriptURL, { method: 'GET' })
-    .then(response => response.json())
-    .then(showData)
+  .then(response => response.json())
+  .then(data => {
+    showData(data);
+    showAllDataButton.classList.toggle('btn-loading');
+    })
     .catch(error => {
       dataContainer.innerHTML = `<p>Terjadi kesalahan: ${error.message}</p>`;
       console.error('Error:', error);
@@ -49,11 +53,13 @@ searchButtonName.addEventListener('click', () => {
 const searchName = searchInputName.value;
 if (searchName) {
     dataContainer.innerHTML = `Mencari data dengan nama: ${searchName}...`;
+    searchButtonName.classList.toggle('btn-loading');
     fetch(`${scriptURL}?searchName=${encodeURIComponent(searchName)}`)
     .then(response => response.json())
     .then(data => {
         showData(data); // Menampilkan semua data yang cocok di tabel
         if (data.data.length > 0) {
+            searchButtonName.classList.toggle('btn-loading');
             alert(`${data.data.length} data ditemukan.`);
         } else {
             alert('Data tidak ditemukan.');

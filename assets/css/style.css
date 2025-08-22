@@ -193,3 +193,17 @@ th, td {
   width: 70%;
   height: 43px;
 }
+
+.pencarian {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#categoryValue { 
+    width: 15rem;
+}
+
+#categoryHeader {
+    width: 15rem;
+}

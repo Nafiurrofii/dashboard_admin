@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dropdown Dinamis</title>
+</head>
+<body>
+<div>
+    <label for="santri_status">Status:</label>
+    <select id="santri_status">
+        <option value="">Pilih Status</option>
+        <option value="santri">Santri</option>
+        <option value="umum">Umum</option>
+    </select>
+    <div id="kategori_container">
+        <label for="kategori">Kategori</label>
+        <select name="kategori" id="kategori">
+            <option value="" disabled selected>Pilih Kategori</option>
+        </select>
+    </div>
+</div>
+<script>
+// Mengubah Kategori Sesuiai yang di inginkan
+        // Ambil elemen HTML yang dibutuhkan
+const santriStatus = document.getElementById('santri_status');
+const kategoriContainer = document.getElementById('kategori_container');
+
+// Tambahkan event listener untuk mendeteksi perubahan pada dropdown santri_status
+santriStatus.addEventListener('change', (event) => {
+    // Dapatkan nilai yang dipilih
+    const selectedValue = event.target.value;
+
+    // Hapus konten sebelumnya di dalam kategori_container
+    kategoriContainer.innerHTML = '';
+
+    // Cek apakah nilai yang dipilih adalah 'santri'
+    if (selectedValue === 'santri') {
+        // Buat elemen label untuk dropdown kategori
+        const label = document.createElement('label');
+        label.textContent = 'Kategori:';
+        label.setAttribute('for', 'kategori');
+        
+        // Buat elemen select (dropdown)
+        const select = document.createElement('select');
+        select.id = 'kategori';
+        select.name = 'kategori';
+        
+        // Tambahkan opsi "Aktif"
+        const optionAktif = document.createElement('option');
+        optionAktif.value = 'aktif';
+        optionAktif.textContent = 'Aktif';
+
+        // Tambahkan opsi "Tidak Aktif"
+        const optionTidakAktif = document.createElement('option');
+        optionTidakAktif.value = 'tidak-aktif';
+        optionTidakAktif.textContent = 'Tidak Aktif';
+
+        // Masukkan opsi ke dalam select
+        select.appendChild(optionAktif);
+        select.appendChild(optionTidakAktif);
+        
+        // Masukkan label dan select ke dalam container
+        kategoriContainer.appendChild(label);
+        kategoriContainer.appendChild(select);
+    }
+});
+// end Mengubah Kategori Sesuiai yang di inginkan
+
+</script>
+</body>
+</html>

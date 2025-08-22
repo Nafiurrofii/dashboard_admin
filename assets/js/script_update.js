@@ -7,6 +7,7 @@ const searchButtonId = document.getElementById("searchButtonId");
 const searchInputId = document.getElementById("searchInputId");
 const dataContainer = document.getElementById("data-container");
 const dataIdInput = document.getElementById("dataId");
+const button = document.getElementById("btn-up");
 
 
 
@@ -60,10 +61,11 @@ const tahunBoyongInput = document.querySelector('input[name="Tahun Boyong"]');
 searchButtonId.addEventListener("click", () => {
             const searchId = searchInputId.value;
             if (searchId) {
+                searchButtonId.classList.toggle('btn-loading')
                 // dataContainer.innerHTML = `Mencari data dengan ID: ${searchId}...`;
                 fetch(`${scriptURL}?searchId=${encodeURIComponent(searchId)}`)
-                    .then((response) => response.json())
-                    .then((data) => {
+                .then((response) => response.json())
+                .then((data) => {
                         if (data.result === "success" && data.data.length > 0) {
                             const foundData = data.data[0];
                             dataIdInput.value = foundData["ID Santri"] || "";
@@ -73,9 +75,7 @@ searchButtonId.addEventListener("click", () => {
                             nismInput.value = foundData["NISM"] || "";
                             nikSantriInput.value = foundData["NIK Santri"] || "";
                             tempatLahirSantriInput.value = foundData["Tempat Lahir Santri"] || "";
-                            // Mengonversi data tanggal menjadi format YYYY-MM-DD
-tanggalLahirSantriInput.value = foundData["Tanggal Lahir Santri"] ? new Date(foundData["Tanggal Lahir Santri"]).toISOString().split('T')[0] : "";
-                            // tanggalLahirSantriInput.value = foundData["Tanggal Lahir Santri"] || "";
+                            tanggalLahirSantriInput.value = foundData["Tanggal Lahir Santri"] ? new Date(foundData["Tanggal Lahir Santri"]).toISOString().split('T')[0] : "";
                             noTelpSantriInput.value = foundData["No. Telp/WA Santri"] || "";
                             nomorKKInput.value = foundData["Nomor KK"] || "";
                             jumlahSaudaraInput.value = foundData["Jumlah Saudara"] || "";
@@ -88,18 +88,14 @@ tanggalLahirSantriInput.value = foundData["Tanggal Lahir Santri"] ? new Date(fou
                             statusAyahSelect.value = foundData["Status Ayah"] || "";
                             nikAyahInput.value = foundData["NIK Ayah"] || "";
                             tempatLahirAyahInput.value = foundData["Tempat Lahir Ayah"] || "";
-                            // Mengonversi data tanggal menjadi format YYYY-MM-DD
-tanggalLahirAyahInput.value = foundData["Tanggal Lahir Ayah"] ? new Date(foundData["Tanggal Lahir Ayah"]).toISOString().split('T')[0] : "";
-                            // tanggalLahirAyahInput.value = foundData["Tanggal Lahir Ayah"] || "";
+                            tanggalLahirAyahInput.value = foundData["Tanggal Lahir Ayah"] ? new Date(foundData["Tanggal Lahir Ayah"]).toISOString().split('T')[0] : "";
                             pekerjaanAyahInput.value = foundData["Pekerjaan Ayah"] || "";
                             pendidikanAyahInput.value = foundData["Pendidikan Terakhir Ayah"] || "";
                             namaIbuInput.value = foundData["Nama Ibu"] || "";
                             statusIbuSelect.value = foundData["Status Ibu"] || "";
                             nikIbuInput.value = foundData["NIK Ibu"] || "";
                             tempatLahirIbuInput.value = foundData["Tempat Lahir Ibu"] || "";
-                            // Mengonversi data tanggal menjadi format YYYY-MM-DD
-tanggalLahirIbuInput.value = foundData["Tanggal Lahir Ibu"] ? new Date(foundData["Tanggal Lahir Ibu"]).toISOString().split('T')[0] : "";
-                            // tanggalLahirIbuInput.value = foundData["Tanggal Lahir Ibu"] || "";
+                            tanggalLahirIbuInput.value = foundData["Tanggal Lahir Ibu"] ? new Date(foundData["Tanggal Lahir Ibu"]).toISOString().split('T')[0] : "";
                             pekerjaanIbuInput.value = foundData["Pekerjaan Ibu"] || "";
                             pendidikanIbuInput.value = foundData["Pendidikan Terakhir Ibu"] || "";
                             noTelpOrtuInput.value = foundData["No Telp Orang Tua"] || "";
@@ -119,18 +115,10 @@ tanggalLahirIbuInput.value = foundData["Tanggal Lahir Ibu"] ? new Date(foundData
                             statusSantriSelect.value = foundData["Status Santri"] || "";
                             tahunBoyongInput.value = foundData["Tahun Boyong"] || "";
 
-                            // firstNameInput.value = foundData.firstName;
-                            // lastNameInput.value = foundData.lastName;
-                            // asalInput.value = foundData.asal;
+                            searchButtonId.classList.toggle('btn-loading')
                             alert("Data ditemukan, silakan perbarui.");
-                            // showData(data); // Menampilkan hasil pencarian di tabel
                         } else {
                             alert("Data tidak ditemukan.");
-                            // dataIdInput.value = "";
-                            // firstNameInput.value = "";
-                            // lastNameInput.value = "";
-                            // asalInput.value = "";
-                            // dataContainer.innerHTML = "<p>Data tidak ditemukan.</p>";
                         }
                     })
                     .catch((error) => console.error("Error:", error));
@@ -144,10 +132,12 @@ tanggalLahirIbuInput.value = foundData["Tanggal Lahir Ibu"] ? new Date(foundData
 // Event listener untuk formulir submit (Add/Update)
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    button.classList.toggle('btn-loading');
     fetch(scriptURL, { method: "POST", body: new FormData(form) })
         .then((response) => response.json())
         .then((data) => {
             if (data.status === "updated") {
+                button.classList.toggle('btn-loading');
                 alert("Data berhasil diperbarui!");
             } else if (data.status === "added") {
                 alert("Data berhasil ditambahkan!");
