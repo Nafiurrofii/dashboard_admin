@@ -59,6 +59,7 @@ pembagianKamarDropdown.innerHTML = `
  <option value="Kamar Syafi'i">Kamar Syafi'i</option>
  <option value="Kamar Maliki">Kamar Maliki</option>
  <option value="Kamar Takhfidz">Kamar Takhfidz</option>
+ <option value="Kamar Mustakmir">Kamar Mustakmir</option>
  <option value="Kamar Al Azhar">Kamar Al Azhar</option>
  <option value="Kamar Al Badar">Kamar Al Badar</option>
  <option value="Kamar Al Hikam">Kamar Al Hikam</option>
